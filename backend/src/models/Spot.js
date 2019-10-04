@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const SpotSchema = new Schema(
   {
     thumbnail: String,
-    company: {
+    cult: {
       type: String,
       required: true,
       minlength: 3
