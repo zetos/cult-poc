@@ -7,11 +7,13 @@ const routes = require('./routes');
 const app = express();
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {
+mongoose
+  .connect(uri, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
-}).catch(err => console.error('Mongoose connect error:', err))
+  })
+  .catch(err => console.error('Mongoose connect error:', err));
 
 const connection = mongoose.connection;
 connection.once('open', () => {
