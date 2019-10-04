@@ -9,6 +9,7 @@ const app = express();
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {
     useNewUrlParser: true,
+    useCreateIndex: true,
     useUnifiedTopology: true
 }).catch(err => console.error('Mongoose connect error:', err))
 
