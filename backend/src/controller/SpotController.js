@@ -3,9 +3,8 @@ const Spot = require('../models/Spot');
 const store = async (req, res) => {
   try {
     // const { email } = req.body;
-    // const user = await User.findOne({ email });
-
-    // return user ? res.json(user) : res.json(await User.create({ email }));
+    console.log(req.body);
+    console.log(req.file);
     return res.json({ message: 'spot success' });
   } catch (err) {
     console.error('SessionController store error:', err);

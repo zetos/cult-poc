@@ -1,6 +1,9 @@
 node_modules/
 .env
 
+#images upload
+uploads/
+
 # local env files
 .env.local
 .env.*.local
