@@ -18,7 +18,13 @@
     "react-native-reanimated": "~1.2.0"
   },
   "devDependencies": {
-    "babel-preset-expo": "^7.0.0"
+    "babel-preset-expo": "^7.0.0",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-native": "^3.7.0",
+    "prettier": "^1.18.2"
   },
   "private": true
 }
