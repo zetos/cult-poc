@@ -18,11 +18,12 @@ export default function Login({ navigation }) {
   const [deities, setDeities] = useState('');
 
   useEffect(() => {
-    AsyncStorage.getItem('user').then(user => {
+    (async () => {
+      const user = await AsyncStorage.getItem('user');
       if (user) {
         navigation.navigate('List');
       }
-    });
+    })();
   }, []);
 
   const handleSubmit = async () => {
