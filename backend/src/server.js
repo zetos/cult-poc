@@ -2,11 +2,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+const socketio = require('socket.io');
+const http = require('http');
 require('dotenv').config();
 
 const routes = require('./routes');
 
 const app = express();
+const server = http.Server(app);
+const io = socketio(server);
 
 const uri = process.env.ATLAS_URI;
 mongoose
@@ -27,4 +31,4 @@ app.use(express.json());
 app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads')));
 app.use(routes);
 
-app.listen(3001);
+server.listen(3001);
