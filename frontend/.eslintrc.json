@@ -1,0 +1,18 @@
+{
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2019,
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "extends": ["prettier"],
+    "plugins": ["prettier", "react"],
+    "rules": {
+        "prettier/prettier": ["error"]
+    }
+  }
