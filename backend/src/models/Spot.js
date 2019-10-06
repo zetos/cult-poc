@@ -17,13 +17,11 @@ const SpotSchema = new Schema(
       required: true
     }
   },
-  { timestamps: true,
-    toJSON: {virtuals: true }
-  }
+  { timestamps: true, toJSON: { virtuals: true } }
 );
 
-SpotSchema.virtual('thumbnail_url').get(function () {
-  return `http://localhost:3001/files/${this.thumbnail}`;
-});
+SpotSchema.virtual('thumbnail_url').get(
+  () => `http://192.168.100.12:3001/files/${this.thumbnail}`
+);
 
 module.exports = mongoose.model('Spot', SpotSchema);
