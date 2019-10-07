@@ -80,11 +80,11 @@ body, input, button {
   padding: 0 20px;
   font-size: 16px;
   font-weight: bold;
-  background: #f05a5b;
+  background: #338855;
   color: #fff;
   cursor: pointer;
 }
 
 .content button.btn:hover {
-  background: #e14f50;
+  background: #215736;
 }
