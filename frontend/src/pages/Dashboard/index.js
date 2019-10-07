@@ -21,19 +21,22 @@ export default function Dashboard() {
   useEffect(() => {
     // immediately invoked function
     (async () => {
-      const user_id = localStorage.getItem('user');
+      socket.on('booking_request', data => {
+        setRequests([...requests, data]);
+      });
+    })();
+  }, [requests, socket]);
 
+  useEffect(() => {
+    (async () => {
+      const user_id = localStorage.getItem('user');
       const response = await api.get('/dashboard', {
         headers: { user_id }
       });
 
-      socket.on('booking_request', data => {
-        setRequests([...requests, data]);
-      });
-
       setSpots(response.data);
     })();
-  }, [requests, socket]);
+  }, []);
 
   const handleAccept = async id => {
     await api.post(`/bookings/${id}/approvals`);
