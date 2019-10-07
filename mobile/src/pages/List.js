@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import socketio from 'socket.io-client';
 import {
+  Alert,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -12,6 +14,23 @@ import logo from '../assets/logo.png';
 
 export default function List() {
   const [deities, setDeities] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const user_id = await AsyncStorage.getItem('user');
+      const socket = socketio('http://192.168.100.12:3001', {
+        query: { user_id }
+      });
+
+      socket.on('booking_response', booking => {
+        Alert.alert(
+          `Your reserve at ${booking.spot.cult} in ${booking.date} was ${
+            booking.approved ? 'APPROVED' : 'REJECTED'
+          }.`
+        );
+      });
+    })();
+  }, []);
 
   useEffect(() => {
     (async () => {

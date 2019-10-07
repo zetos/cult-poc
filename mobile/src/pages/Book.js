@@ -34,7 +34,6 @@ export default function Book({ navigation }) {
         style={styles.input}
         placeholder="What date do you want to book?"
         placeholderTextColor="#999"
-        autoCapitalize="words"
         autoCorrect={false}
         value={date}
         onChangeText={setDate}
