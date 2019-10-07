@@ -26,6 +26,22 @@ connection.once('open', () => {
   console.log('MongoDB database connection established successfully..');
 });
 
+//TODO: Change to a cache DB.
+const connectedUsers = {};
+
+io.on('connection', socket => {
+  const { user_id } = socket.handshake.query;
+
+  connectedUsers[user_id] = socket.id;
+});
+
+app.use((req, res, next) => {
+  req.io = io;
+  req.connectedUsers = connectedUsers;
+
+  return next();
+});
+
 app.use(cors());
 app.use(express.json());
 app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads')));
