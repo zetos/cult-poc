@@ -23,6 +23,12 @@ const store = async (req, res) => {
       .populate('user')
       .execPopulate();
 
+    const ownerSocket = req.connectedUsers[booking.spot.user];
+
+    if (ownerSocket) {
+      req.io.to(ownerSocket).emit('booking_request', booking);
+    }
+
     return res.json(booking);
   } catch (err) {
     return res.status(400).send({ error: err.message });
